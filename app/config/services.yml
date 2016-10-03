@@ -1,0 +1,130 @@
+parameters:
+    app_bundle.packageName: GoogleTimezoneAPI
+    app_bundle.metadata:
+        package: "%app_bundle.packageName%"
+        tagline: Google Timezone API
+        description: The Google Maps Time Zone API provides a simple interface to request the time zone for a location on the earth.
+        image: https://www.gstatic.com/images/branding/product/1x/maps_64dp.png
+        repo: https://github.com/RapidSoftwareSolutions/Marketplace-GoogleTimezoneAPI-Package
+        accounts:
+          domain: google.com
+          credentials:
+            - apiKey
+        blocks:
+        -
+          name: getTimeZone
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Optional: Access token obtained from Google.com"
+            -
+              name: location
+              type: String
+              info: "Required: a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
+            -
+              name: timestamp
+              type: String
+              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+            -
+              name: language
+              type: String
+              info: "Optional: The language in which to return results"
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success-actionComplete
+              info: "success-actionComplete"
+            -
+              name: success -actionIncomplete
+              info: "success -actionIncomplete"
+        -
+          name: getLocalTime
+          args:
+          args:
+            -
+              name: apiKey
+              type: String
+              info: "Optional: Access token obtained from Google.com"
+            -
+              name: location
+              type: String
+              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+            -
+              name: timestamp
+              type: String
+              info: "A single header value is used to identify TTS language. For example: en-US"
+          callbacks:
+            -
+              name: error
+              info: "error"
+            -
+              name: success
+              info: "success"
+
+    app_bundle.apiUrl: "https://maps.googleapis.com/maps/api/timezone/"
+    app_bundle.default_profile: "/"
+    app_bundle.get_timezone:
+      url: "%app_bundle.apiUrl%"
+      uri: "json?"
+      headers:
+        Content-Type: "application/json"
+      method: "get"
+      content_in_body: false
+      content_body_json: false
+      enable_pagination: false
+      limit_field_stop_pagination: false
+      pagination_next_url_key: "next"
+      error_context: "errorMessage"
+      extra_context: false
+      media_response: false
+      object_uri: false
+      object_headers: false
+      callback_message:
+        success: "success"
+        extra: false
+        error: "error"
+      args:
+        key: "apiKey"
+        location: "location"
+        timestamp: "timestamp"
+        language: "language"
+    app_bundle.get_local_time:
+      url: "%app_bundle.apiUrl%"
+      uri: "json?"
+      headers:
+        Content-Type: "application/json"
+      method: "get"
+      content_in_body: false
+      content_body_json: false
+      enable_pagination: false
+      limit_field_stop_pagination: false
+      pagination_next_url_key: "next"
+      error_context: "errorMessage"
+      extra_context: false
+      media_response: false
+      object_uri: false
+      object_headers: false
+      callback_message:
+        error: "error"
+        success: "success"
+        extra: false
+      args:
+        key: "apiKey"
+        location: "location"
+        timestamp: "timestamp"
+
+services:
+    app_bundle.block_abstract:
+        class: AppBundle\Utils\Package\Abstracts\BlockAbstract
+        abstract: true
+        arguments: ["@request_stack", "@buzz", "@app_bundle.request_builder", "@app_bundle.finder"]
+    app_bundle.package:
+        class: AppBundle\Utils\Package\Package
+        parent: app_bundle.block_abstract
+    app_bundle.finder:
+        class: AppBundle\Utils\Library\Finder
+    app_bundle.request_builder:
+        class: AppBundle\Utils\Library\RequestBuilder
