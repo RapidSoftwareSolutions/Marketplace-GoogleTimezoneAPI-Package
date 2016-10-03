@@ -1,7 +1,7 @@
 # GoogleTimezoneAPI Package
 The Google Maps Time Zone API provides a simple interface to request the time zone for a location on the earth.
 * Domain: google.com
-* Credentials: apiKey
+* Credentials: optional
 
 ## How to get credentials: 
 0. If you need more quota make apiKey at [Google console](https://console.developers.google.com/flows/enableapi?apiid=timezone_backend&reusekey=true&pli=1)

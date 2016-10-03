@@ -9,7 +9,7 @@ parameters:
         accounts:
           domain: google.com
           credentials:
-            - apiKey
+            - apiKey (optional)
         blocks:
         -
           name: getTimeZone
@@ -35,11 +35,8 @@ parameters:
               name: error
               info: "error"
             -
-              name: success-actionComplete
-              info: "success-actionComplete"
-            -
-              name: success -actionIncomplete
-              info: "success -actionIncomplete"
+              name: success
+              info: "success"
         -
           name: getLocalTime
           args:
