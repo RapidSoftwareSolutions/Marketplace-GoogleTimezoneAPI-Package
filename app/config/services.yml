@@ -9,14 +9,14 @@ parameters:
         accounts:
           domain: google.com
           credentials:
-            - apiKey (optional)
+            - apiKey
         blocks:
         -
           name: getTimeZone
           args:
             -
               name: apiKey
-              type: String
+              type: credentials
               info: "Optional: Access token obtained from Google.com"
             -
               name: location
@@ -43,7 +43,7 @@ parameters:
           args:
             -
               name: apiKey
-              type: String
+              type: credentials
               info: "Optional: Access token obtained from Google.com"
             -
               name: location
