@@ -40,7 +40,6 @@ parameters:
         -
           name: getLocalTime
           args:
-          args:
             -
               name: apiKey
               type: credentials
@@ -48,11 +47,11 @@ parameters:
             -
               name: location
               type: String
-              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+              info: "Required: a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
             -
               name: timestamp
               type: String
-              info: "A single header value is used to identify TTS language. For example: en-US"
+              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
           callbacks:
             -
               name: error
