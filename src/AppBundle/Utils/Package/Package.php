@@ -14,7 +14,7 @@ class Package extends BlockAbstract
      */
     public function getTimeZone($schema)
     {
-        $this->result = $this->sendRequest($schema, $this->prepareRequest($schema));
+        $this->result = json_decode($this->sendRequest($schema, $this->prepareRequest($schema)), true);
 
         $this->pagination($schema);
 
@@ -28,7 +28,11 @@ class Package extends BlockAbstract
     {
         $googleTimeZone = json_decode($this->sendRequest($schema, $this->prepareRequest($schema)), true);
 
-        $this->result = $this->parameters['timestamp'] + $googleTimeZone['dstOffset'] + $googleTimeZone['rawOffset'];
+        if(!(isset($googleTimeZone['dstOffset']) && isset($googleTimeZone['rawOffset']))){
+            $this->result = $googleTimeZone;
+        }else{
+            $this->result = ['status' => 'OK', 'timestamp' => $this->parameters['timestamp'] + $googleTimeZone['dstOffset'] + $googleTimeZone['rawOffset']];
+        }
 
         $this->pagination($schema);
 

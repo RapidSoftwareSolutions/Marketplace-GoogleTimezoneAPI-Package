@@ -9,14 +9,14 @@ parameters:
         accounts:
           domain: google.com
           credentials:
-            - apiKey (optional)
+            - apiKey
         blocks:
         -
           name: getTimeZone
           args:
             -
               name: apiKey
-              type: String
+              type: credentials
               info: "Optional: Access token obtained from Google.com"
             -
               name: location
@@ -40,19 +40,18 @@ parameters:
         -
           name: getLocalTime
           args:
-          args:
             -
               name: apiKey
-              type: String
+              type: credentials
               info: "Optional: Access token obtained from Google.com"
             -
               name: location
               type: String
-              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+              info: "Required: a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
             -
               name: timestamp
               type: String
-              info: "A single header value is used to identify TTS language. For example: en-US"
+              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
           callbacks:
             -
               name: error
@@ -74,7 +73,7 @@ parameters:
       enable_pagination: false
       limit_field_stop_pagination: false
       pagination_next_url_key: "next"
-      error_context: "errorMessage"
+      error_context: "status"
       extra_context: false
       media_response: false
       object_uri: false
@@ -99,7 +98,7 @@ parameters:
       enable_pagination: false
       limit_field_stop_pagination: false
       pagination_next_url_key: "next"
-      error_context: "errorMessage"
+      error_context: "status"
       extra_context: false
       media_response: false
       object_uri: false

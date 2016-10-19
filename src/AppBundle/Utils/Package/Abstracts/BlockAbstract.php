@@ -135,7 +135,7 @@ abstract class BlockAbstract
      */
     public function setResponse($schema)
     {
-        if ($this->finder->recursiveFindValueInMultiArray($this->result, $schema['error_context'])) {
+        if ($this->finder->recursiveFindValueInMultiArray($this->result, $schema['error_context']) != 'OK') {
 
             $this->response = ['callback' => $schema['callback_message']['error'], 'contextWrites' => ['to' => json_encode($this->result)]];
         } elseif ($this->finder->recursiveFindValueInMultiArray($this->result, $schema['extra_context'])) {
