@@ -5,12 +5,7 @@ The Google Maps Time Zone API provides a simple interface to request the time zo
 
 ## How to get credentials: 
 0. If you need more quota make apiKey at [Google console](https://console.developers.google.com/flows/enableapi?apiid=timezone_backend&reusekey=true&pli=1)
-
-## TOC: 
-* [getTimeZone](#getTimeZone)
-* [getLocalTime](#getLocalTime)
  
-<a name="getTimeZone"/>
 ## GoogleTimezoneAPI.getTimeZone
 Method description
 
@@ -29,25 +24,7 @@ Method description
 	"language": "..."
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":{
-                    "dstOffset" : 0,
-                    "rawOffset" : -28800,
-                    "status" : "OK",
-                    "timeZoneId" : "America/Los_Angeles",
-                    "timeZoneName" : "Pacific Standard Time"
-                 }
-		}
-	}
-}
-```
 
-<a name="getLocalTime"/>
 ## GoogleTimezoneAPI.getLocalTime
 Method description
 
@@ -62,17 +39,6 @@ Method description
 {	"apiKey": "...",
 	"location": "...",
 	"timestamp": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": "1331132400"
-		}
-	}
 }
 ```
 

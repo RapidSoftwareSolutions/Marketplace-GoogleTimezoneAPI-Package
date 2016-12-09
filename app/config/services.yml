@@ -4,6 +4,17 @@ parameters:
         package: "%app_bundle.packageName%"
         tagline: Google Timezone API
         description: The Google Maps Time Zone API provides a simple interface to request the time zone for a location on the earth.
+        keywords:
+          - geo-target
+          - geo-targeted
+          - geography
+          - geolocal 
+          - geotarget 
+          - map 
+          - maps 
+          - time 
+          - timezone 
+          - travel 
         image: https://www.gstatic.com/images/branding/product/1x/maps_64dp.png
         repo: https://github.com/RapidSoftwareSolutions/Marketplace-GoogleTimezoneAPI-Package
         accounts:
@@ -13,23 +24,28 @@ parameters:
         blocks:
         -
           name: getTimeZone
+          description: Time zone data for a point on the earth
           args:
             -
               name: apiKey
               type: credentials
-              info: "Optional: Access token obtained from Google.com"
+              info: "Access token obtained from Google.com"
+              required: false
             -
               name: location
               type: String
-              info: "Required: a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
+              info: "a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
+              required: true
             -
               name: timestamp
               type: String
-              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+              info: "specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+              required: true
             -
               name: language
               type: String
-              info: "Optional: The language in which to return results"
+              info: "The language in which to return results"
+              required: false
           callbacks:
             -
               name: error
@@ -39,19 +55,23 @@ parameters:
               info: "success"
         -
           name: getLocalTime
+          description: Calculating the Local Time
           args:
             -
               name: apiKey
               type: credentials
-              info: "Optional: Access token obtained from Google.com"
+              info: "Access token obtained from Google.com"
+              required: false
             -
               name: location
               type: String
-              info: "Required: a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
+              info: "a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
+              required: true
             -
               name: timestamp
               type: String
-              info: "Required: specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+              info: "specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
+              required: true
           callbacks:
             -
               name: error
