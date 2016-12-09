@@ -137,13 +137,13 @@ abstract class BlockAbstract
     {
         if ($this->finder->recursiveFindValueInMultiArray($this->result, $schema['error_context']) != 'OK') {
 
-            $this->response = ['callback' => $schema['callback_message']['error'], 'contextWrites' => ['to' => json_encode($this->result)]];
+            $this->response = ['callback' => $schema['callback_message']['error'], 'contextWrites' => ['to' => $this->result]];
         } elseif ($this->finder->recursiveFindValueInMultiArray($this->result, $schema['extra_context'])) {
 
-            $this->response = ['callback' => $schema['callback_message']['extra'], 'contextWrites' => ['to' => json_encode($this->result)]];
+            $this->response = ['callback' => $schema['callback_message']['extra'], 'contextWrites' => ['to' => $this->result]];
         } else {
 
-            $this->response = ['callback' => $schema['callback_message']['success'], 'contextWrites' => ['to' => json_encode($this->result)]];
+            $this->response = ['callback' => $schema['callback_message']['success'], 'contextWrites' => ['to' => $this->result]];
         }
     }
 
