@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/GoogleTimezoneAPI/functions?utm_source=RapidAPIGitHub_GoogleTimezoneFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # GoogleTimezoneAPI Package
 The Google Maps Time Zone API provides a simple interface to request the time zone for a location on the earth.
 * Domain: google.com
