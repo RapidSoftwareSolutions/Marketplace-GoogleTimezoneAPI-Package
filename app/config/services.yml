@@ -32,9 +32,14 @@ parameters:
               info: "Access token obtained from Google.com"
               required: false
             -
-              name: location
+              name: latitude
               type: String
-              info: "a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
+              info: "latitude=-33.86, representing the latitude to look up."
+              required: true
+            -
+              name: longitude
+              type: String
+              info: "longitude=-151.20, representing the longitude to look up."
               required: true
             -
               name: timestamp
@@ -63,9 +68,14 @@ parameters:
               info: "Access token obtained from Google.com"
               required: false
             -
-              name: location
+              name: latitude
               type: String
-              info: "a comma-separated lat,lng tuple (eg. location=-33.86,151.20), representing the location to look up."
+              info: "latitude=-33.86, representing the latitude to look up."
+              required: true
+            -
+              name: longitude
+              type: String
+              info: "longitude=-151.20, representing the longitude to look up."
               required: true
             -
               name: timestamp
@@ -104,7 +114,9 @@ parameters:
         error: "error"
       args:
         key: "apiKey"
-        location: "location"
+        location:
+            - latitude
+            - longitude
         timestamp: "timestamp"
         language: "language"
     app_bundle.get_local_time:
@@ -129,7 +141,9 @@ parameters:
         extra: false
       args:
         key: "apiKey"
-        location: "location"
+        location:
+            - latitude
+            - longitude
         timestamp: "timestamp"
 
 services:

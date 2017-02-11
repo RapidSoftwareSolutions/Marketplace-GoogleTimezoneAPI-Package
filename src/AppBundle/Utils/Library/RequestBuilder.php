@@ -41,6 +41,17 @@ class RequestBuilder
                 if (isset($parameters[$rapidApiValue]) && $parameters[$rapidApiValue] != '') {
 
                     $query[$apiValue] = $parameters[$rapidApiValue];
+                }elseif (is_array($rapidApiValue)){
+                    $temp = null;
+
+                    foreach ($rapidApiValue as $apiValueArr => $rapidApiValueArr){
+                        if (isset($parameters[$rapidApiValueArr]) && $parameters[$rapidApiValueArr] != '') {
+
+                            $temp[$rapidApiValueArr] = $parameters[$rapidApiValueArr];
+                        }
+                    }
+                    $query[$apiValue] = $this->convertArrayToList($temp);
+
                 }
             }
             if ($schema['content_body_json'] !== false) {
@@ -122,5 +133,17 @@ class RequestBuilder
 
         return $result;
     }
+
+    /**
+     * ['Sam','tomi'] => Sam, tomi
+     *
+     * @param $arr
+     * @return string
+     */
+    public function convertArrayToList($arr)
+    {
+        return rtrim(implode(',', $arr), ',');
+    }
+
 
 }
