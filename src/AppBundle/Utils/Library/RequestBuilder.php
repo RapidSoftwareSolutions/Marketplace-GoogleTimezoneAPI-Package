@@ -38,20 +38,19 @@ class RequestBuilder
             $query = [];
 
             foreach ($schema['args'] as $apiValue => $rapidApiValue) {
-                if (isset($parameters[$rapidApiValue]) && $parameters[$rapidApiValue] != '') {
-
-                    $query[$apiValue] = $parameters[$rapidApiValue];
-                }elseif (is_array($rapidApiValue)){
+                if (is_array($rapidApiValue)) {
                     $temp = null;
 
-                    foreach ($rapidApiValue as $apiValueArr => $rapidApiValueArr){
+                    foreach ($rapidApiValue as $apiValueArr => $rapidApiValueArr) {
                         if (isset($parameters[$rapidApiValueArr]) && $parameters[$rapidApiValueArr] != '') {
 
                             $temp[$rapidApiValueArr] = $parameters[$rapidApiValueArr];
                         }
                     }
                     $query[$apiValue] = $this->convertArrayToList($temp);
+                } elseif (isset($parameters[$rapidApiValue]) && $parameters[$rapidApiValue] != '') {
 
+                    $query[$apiValue] = $parameters[$rapidApiValue];
                 }
             }
             if ($schema['content_body_json'] !== false) {
