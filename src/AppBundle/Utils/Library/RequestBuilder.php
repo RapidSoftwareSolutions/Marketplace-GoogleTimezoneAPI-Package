@@ -2,6 +2,8 @@
 
 namespace AppBundle\Utils\Library;
 
+use DateTime;
+
 /**
  * @author Dmitry Shumytskyi <d.shumytskyi@gmail.com>
  */
@@ -38,21 +40,13 @@ class RequestBuilder
             $query = [];
 
             foreach ($schema['args'] as $apiValue => $rapidApiValue) {
-                if (is_array($rapidApiValue)) {
-                    $temp = null;
 
-                    foreach ($rapidApiValue as $apiValueArr => $rapidApiValueArr) {
-                        if (isset($parameters[$rapidApiValueArr]) && $parameters[$rapidApiValueArr] != '') {
+                if (isset($parameters[$rapidApiValue['marketName']]) && $parameters[$rapidApiValue['marketName']] != '') {
 
-                            $temp[$rapidApiValueArr] = $parameters[$rapidApiValueArr];
-                        }
-                    }
-                    $query[$apiValue] = $this->convertArrayToList($temp);
-                } elseif (isset($parameters[$rapidApiValue]) && $parameters[$rapidApiValue] != '') {
-
-                    $query[$apiValue] = $parameters[$rapidApiValue];
+                    $query[$apiValue] = call_user_func_array(array($this, $rapidApiValue['type']), [$parameters[$rapidApiValue['marketName']], $rapidApiValue]);
                 }
             }
+
             if ($schema['content_body_json'] !== false) {
 
                 return json_encode($query);
@@ -141,7 +135,34 @@ class RequestBuilder
      */
     public function convertArrayToList($arr)
     {
+
         return rtrim(implode(',', $arr), ',');
+    }
+
+    public function datePicker($value, $conf)
+    {
+        if (is_numeric($value)) {
+
+            return $value;
+        } else {
+
+            $date = new DateTime($value);
+
+            return $date->getTimestamp();
+        }
+
+    }
+
+    public function map($value, $conf)
+    {
+
+        return $value;
+    }
+
+    public function string($value, $conf)
+    {
+
+        return $value;
     }
 
 

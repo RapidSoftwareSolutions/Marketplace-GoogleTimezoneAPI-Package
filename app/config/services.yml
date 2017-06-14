@@ -43,7 +43,7 @@ parameters:
               required: true
             -
               name: timestamp
-              type: String
+              type: DatePicker
               info: "specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
               required: true
             -
@@ -79,7 +79,7 @@ parameters:
               required: true
             -
               name: timestamp
-              type: String
+              type: DatePicker
               info: "specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
               required: true
           callbacks:
@@ -113,12 +113,18 @@ parameters:
         extra: false
         error: "error"
       args:
-        key: "apiKey"
+        key:
+          type: "string"
+          marketName: "apiKey"
         location:
-            - latitude
-            - longitude
-        timestamp: "timestamp"
-        language: "language"
+          type: "map"
+          marketName: "location"
+        timestamp:
+          type: "datePicker"
+          marketName: "timestamp"
+        language:
+          type: "string"
+          marketName: "language"
     app_bundle.get_local_time:
       url: "%app_bundle.apiUrl%"
       uri: "json?"
@@ -140,11 +146,15 @@ parameters:
         success: "success"
         extra: false
       args:
-        key: "apiKey"
+        key:
+          type: "string"
+          marketName: "apiKey"
         location:
-            - latitude
-            - longitude
-        timestamp: "timestamp"
+          type: "map"
+          marketName: "location"
+        timestamp:
+          type: "datePicker"
+          marketName: "timestamp"
 
 services:
     app_bundle.block_abstract:
