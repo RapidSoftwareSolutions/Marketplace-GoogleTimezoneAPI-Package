@@ -32,14 +32,9 @@ parameters:
               info: "Access token obtained from Google.com"
               required: false
             -
-              name: latitude
-              type: String
-              info: "latitude=-33.86, representing the latitude to look up."
-              required: true
-            -
-              name: longitude
-              type: String
-              info: "longitude=-151.20, representing the longitude to look up."
+              name: location
+              type: Map
+              info: "A set of latitude and longitude. Example: 55.33, 12.44"
               required: true
             -
               name: timestamp
@@ -68,14 +63,9 @@ parameters:
               info: "Access token obtained from Google.com"
               required: false
             -
-              name: latitude
-              type: String
-              info: "latitude=-33.86, representing the latitude to look up."
-              required: true
-            -
-              name: longitude
-              type: String
-              info: "longitude=-151.20, representing the longitude to look up."
+              name: location
+              type: Map
+              info: "A set of latitude and longitude. Example: 55.33, 12.44"
               required: true
             -
               name: timestamp
