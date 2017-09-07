@@ -20,17 +20,12 @@ parameters:
         accounts:
           domain: google.com
           credentials:
-            - apiKey
+            - 
         blocks:
         -
           name: getTimeZone
           description: Time zone data for a point on the earth
           args:
-            -
-              name: apiKey
-              type: credentials
-              info: "Access token obtained from Google.com"
-              required: false
             -
               name: location
               type: Map
@@ -46,6 +41,11 @@ parameters:
               type: String
               info: "The language in which to return results"
               required: false
+            -
+              name: apiKey
+              type: String
+              info: "Access token obtained from Google.com"
+              required: false
           callbacks:
             -
               name: error
@@ -58,11 +58,6 @@ parameters:
           description: Calculating the Local Time
           args:
             -
-              name: apiKey
-              type: credentials
-              info: "Access token obtained from Google.com"
-              required: false
-            -
               name: location
               type: Map
               info: "A set of latitude and longitude. Example: 55.33, 12.44"
@@ -72,6 +67,11 @@ parameters:
               type: DatePicker
               info: "specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values."
               required: true
+            -
+              name: apiKey
+              type: string
+              info: "Access token obtained from Google.com"
+              required: false              
           callbacks:
             -
               name: error
