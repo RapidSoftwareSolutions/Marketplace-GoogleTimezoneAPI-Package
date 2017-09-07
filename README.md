@@ -24,6 +24,6 @@ Returns the local time of a given location.
 | Field    | Type  | Description
 |----------|-------|----------
 | location | String| latitude, longitude, representing the location to look up.
-| timestamp| String| A single header value is used to identify TTS language. For example: en-US
+| timestamp| String| Specifies the desired time as seconds since midnight, January 1, 1970 UTC. The Google Maps Time Zone API uses the timestamp to determine whether or not Daylight Savings should be applied. Times before 1970 can be expressed as negative values.
 | apiKey   | String| Access token obtained from Google.com
 
