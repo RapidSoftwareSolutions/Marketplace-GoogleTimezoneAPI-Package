@@ -38,7 +38,59 @@ parameters:
               required: true
             -
               name: language
-              type: String
+              type: Select
+              options:
+                - ar
+                - bg
+                - bn
+                - ca
+                - cs
+                - da
+                - de
+                - el
+                - en
+                - en-AU
+                - en-GB
+                - es
+                - eu
+                - fa
+                - fi
+                - fil
+                - fr
+                - gl
+                - gu
+                - hi
+                - hr
+                - hu
+                - id
+                - it
+                - iw
+                - ja
+                - kn
+                - ko
+                - lt
+                - lv
+                - ml
+                - mr
+                - nl
+                - pl
+                - pt
+                - pt-BR
+                - pt-PT
+                - ro
+                - ru
+                - sl
+                - sr
+                - sv
+                - ta
+                - te
+                - th
+                - tl
+                - tr
+                - uk
+                - vi
+                - zh-CN
+                - zh-TW
               info: "The language in which to return results"
               required: false
             -
