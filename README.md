@@ -6,7 +6,7 @@ The Google Maps Time Zone API provides a simple interface to request the time zo
 * Credentials: Use api key if you need more quota only.
 
 ## How to get credentials: 
-0. If you need more quota make apiKey at [Google console](https://console.developers.google.com/flows/enableapi?apiid=timezone_backend&reusekey=true&pli=1)
+0. If you need a higher quota, create an apiKey at [Google console](https://console.developers.google.com/flows/enableapi?apiid=timezone_backend&reusekey=true&pli=1)
  
 ## GoogleTimezoneAPI.getTimeZone
 Returns time zone data for a point on the earth, specified by a latitude/longitude pair.
